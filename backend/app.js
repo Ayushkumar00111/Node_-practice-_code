@@ -4,6 +4,8 @@ import postuser from "./routes/url-routes/user.js"
 import database from "./config/db.js";
 import cookieParser from "cookie-parser";
 import middleware from "./middleware/midddleware.js";
+import dotenv from "dotenv";
+dotenv.config();
 database();
 
 const app = express();
@@ -23,6 +25,7 @@ app.use("/user" , postuser)
 app.get("/",(req,res)=>{
     res.render("login")
 })
-app.listen(3000 ,()=>{
+const port = process.env.port
+app.listen(port ,()=>{
     console.log("server are success full run ")
 })
