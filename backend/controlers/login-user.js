@@ -4,6 +4,7 @@ import { setuser } from "../service/auth.js";
 import bcrypt from "bcrypt";
 
 async function  create(req, resp) {
+    
     try{
         const {email , password} = req.body;
    
