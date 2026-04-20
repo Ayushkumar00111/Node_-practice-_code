@@ -1,6 +1,6 @@
 import express  from "express";
 import user from "./routes/statics/user.js"
-import postuser from "./routes/url-routes/user.js"
+
 import database from "./config/db.js";
 import cookieParser from "cookie-parser";
 import middleware from "./middleware/midddleware.js";
@@ -27,6 +27,9 @@ app.set('view engine','ejs')
 
 
 app.use("/" ,user )
+app.get("/",(req,resp)=>{
+    resp.render("home")
+})
 
 
 

@@ -41,7 +41,7 @@ paths:
                   example: ayush@mail
       responses:
         200:
-          description: Event created
+          description: user created
 
   /bookings:
     post:

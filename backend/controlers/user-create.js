@@ -7,7 +7,7 @@ async function User(req,resp) {
 
     const {name , email , password} = req.body;
     const hash = await bcrypt.hash(password,10)
-    console.log(name  , email , password)
+
     const data = await Userdata.create({
         name,
         email,
