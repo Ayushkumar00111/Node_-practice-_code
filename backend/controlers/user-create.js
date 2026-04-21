@@ -19,8 +19,8 @@ async function User(req,resp) {
 
     return resp.json( {error :"data is not store"})
     }
-       const token =  setuser(req.body);
-       resp.cookie('token',token)
+    //    const token =  setuser(req.body);
+    //    resp.cookie('token',token)
     
       return resp.redirect("/signup")
     

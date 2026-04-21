@@ -11,13 +11,16 @@ const route = e.Router();
 
 
 route.get("/dashboard",middleware, async(req,res)=>{ 
-const token = req.userid
-const data = await taskcreate.find({userid:token})
-console.log(data)
-
-
-
+    try {
+        const id = req.userid
+        
+const data = await taskcreate.find({userid:id})
+console.log(data+" user data"+ id)
 res.render("dashboard" ,{data} );
+    } catch (error) {
+        return res.json({meassge:"faild to geting"})
+    }
+
 })
 route.get("/signup",(req,res)=>{
 res.render("signup");

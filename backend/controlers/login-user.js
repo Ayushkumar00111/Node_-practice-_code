@@ -16,10 +16,10 @@ async function  create(req, resp) {
             return resp.json({meassge:"data not founded"})
         }
 
-        const token = setuser(req.body)
+        const token = setuser({userid:result._id.toString() })
       
         resp.cookie('token',token )
-        req.userid= result._id.toString())
+        
         return resp.redirect("/dashboard")
 
     }catch(error){
