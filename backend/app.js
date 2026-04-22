@@ -9,9 +9,11 @@ import dotenv from "dotenv";
 
 import swaggerUi from "swagger-ui-express";
 import YAML from "yamljs"
+import mysqls from "./mysql2/mysql.js";
+
 
 dotenv.config();
-database();
+mysqls()
 const app = express();
 
 app.use(express.json());

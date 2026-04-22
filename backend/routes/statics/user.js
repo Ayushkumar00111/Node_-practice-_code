@@ -5,17 +5,22 @@ import User from "../../controlers/user-create.js";
 import create from "../../controlers/login-user.js";
 import task from "../../controlers/task-creater.js";
 import { taskcreate } from "../../models/task.js";
+import middleware2 from "../../middleware/global_middlewaree.js";
 
 
 const route = e.Router();
+route.get("/logout" ,(req,resp)=>{
+    resp.clearCookie("token")
+    return resp.redirect("/login")
+})
 
-
-route.get("/dashboard",middleware, async(req,res)=>{ 
+route.get("/dashboard",middleware2, async(req,res)=>{ 
+    
     try {
         const id = req.userid
         
 const data = await taskcreate.find({userid:id})
-console.log(data+" user data"+ id)
+
 res.render("dashboard" ,{data} );
     } catch (error) {
         return res.json({meassge:"faild to geting"})
@@ -29,6 +34,6 @@ route.get("/login",(req,res)=>{
 res.render("login");
 })
 route.post("/signup",User)
-route.post("/login",create)
-route.post("/task",task)
+route.post("/login",create )
+route.post("/task",middleware2,task)
 export default route;

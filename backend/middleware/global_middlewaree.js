@@ -1,4 +1,4 @@
-import { getuser } from "../service/auth";
+import { getuser } from "../service/auth.js";
 
 function middleware2 (req,resp,next){
     const data = req.cookies.token;
@@ -6,9 +6,9 @@ function middleware2 (req,resp,next){
     const publicRoutes = ["/","/signup"];
 
     if(publicRoutes.includes(req.path) || data){
-        const userids = getuser({userid})
-        console.log(userids +"iam in middle ware")
-        req.userid = userids
+        const userids = getuser(data)
+       
+        req.userid = userids.userid
         return next();
     }
   
