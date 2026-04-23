@@ -24,15 +24,24 @@ async function mysqls() {
 
 //     `)
 
-const values = [
-    ["kamat","kamat@gmail.com"],
-    ["lalat","lalat@gmail.com"],
-    ["majak","majak@gmail.com"],
-]
-await db.query(`
-   INSERT INTO example_project(username,email) values ? 
-    `,[values])
-const [row] = await db.execute('select * from example_project')
+// const values = [
+//     ["kamat","kamat@gmail.com"],
+//     ["lalat","lalat@gmail.com"],
+//     ["majak","majak@gmail.com"],
+// ]
+// await db.query(`
+//    INSERT INTO example_project(username,email) values ? 
+//     `,[values])
+// await db.execute(`
+//     UPDATE example_project
+//     SET email="ayushkamat@.com" , username="ayushkaka"
+//     WHERE id=3
+//     `)
+await db.execute(`
+    DELETE FROM example_project
+    WHERE id=6
+    `)
+const [row] = await db.execute('select * from example_project ')
 console.log(row)
 }
 export default mysqls;
