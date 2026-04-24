@@ -9,11 +9,12 @@ import dotenv from "dotenv";
 
 import swaggerUi from "swagger-ui-express";
 import YAML from "yamljs"
-import mysqls from "./mysql2/mysql.js";
+import pool from "./config/db.js";
+
 
 
 dotenv.config();
-mysqls()
+
 const app = express();
 
 app.use(express.json());
@@ -25,7 +26,14 @@ app.use("/app-swagger" , swaggerUi.serve , swaggerUi.setup(swaggerDoc))
 
 // app.use(middleware)
 app.set('view engine','ejs')
-
+app.get("/getdb", async (req,resp)=>{
+    try {
+        const [row]= await pool.query('select 1')
+        resp.json({meassage:"all are good db was success fully connect"})
+    } catch (error) {
+        resp.status(499).json({meassage:"all are bad ??"})
+    }
+})
 
 
 app.use("/" ,user )
