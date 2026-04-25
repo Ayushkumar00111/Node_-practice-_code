@@ -6,6 +6,7 @@ import create from "../../controlers/login-user.js";
 import task from "../../controlers/task-creater.js";
 import { taskcreate } from "../../models/task.js";
 import middleware2 from "../../middleware/global_middlewaree.js";
+import eventadd from "../../controlers/event-create.js";
 
 
 const route = e.Router();
@@ -36,4 +37,6 @@ res.render("login");
 route.post("/signup",User)
 route.post("/login",create )
 route.post("/task",middleware2,task)
+route.post("/eventadd", eventadd)
+
 export default route;
